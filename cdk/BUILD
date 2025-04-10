@@ -1,3 +1,27 @@
+load("@rules_proto//proto:defs.bzl", "proto_library")
+
+proto_library(
+    name = "cdk_protocol_mysqlx_pb_proto_lib",
+    srcs = glob([
+        "protocol/mysqlx/pb/*.proto",
+    ]),
+    deps = [
+        "@com_google_protobuf//:descriptor_proto",
+    ],
+    strip_import_prefix = "/cdk/protocol/mysqlx/pb",
+)
+
+
+cc_proto_library(
+    name = "cdk_protocol_mysqlx_pb_proto_cc",
+    deps = [
+        ":cdk_protocol_mysqlx_pb_proto_lib",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+
+
 cc_library(
     name = "cdk",
     srcs = glob([
@@ -5,6 +29,7 @@ cc_library(
         "foundation/*.cc",
         "mysqlx/*.cc",
         "parser/*.cc",
+        "protocol/mysqlx/*.cc",
     ], exclude = [
         "**/tests/**",
         "**/extra/**"
@@ -14,6 +39,7 @@ cc_library(
         "include/**/*.h",
         "mysqlx/*.h",
         "parser/*.h",
+        "protocol/mysqlx/*.h",
     ], exclude = [
         "**/tests/**",
         "**/extra/**"
@@ -24,15 +50,20 @@ cc_library(
     ],
     deps = [
         "@rapidjson//:rapidjson",
-        "@openssl//:openssl",
+        "@openssl//:ssl",
+        "@openssl//:crypto",
         "@com_google_protobuf//:protobuf",
         "@lz4//:lz4",
+        "@lz4//:lz4_frame",
         "@zstd//:zstd",
         "@zlib//:zlib",
-        "//cdk/protocol/mysqlx:cdk_protocol_mysqlx",
+        ":cdk_protocol_mysqlx_pb_proto_cc",
     ],
     copts = [
         "-std=c++20",
     ],
     visibility = ["//visibility:public"],
+    linkopts = [
+        "-lresolv"
+    ],
 )

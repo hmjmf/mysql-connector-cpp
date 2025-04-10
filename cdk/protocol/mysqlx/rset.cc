@@ -41,7 +41,7 @@
 #include "protocol.h"
 
 PUSH_PB_WARNINGS
-#include "protobuf/mysqlx_sql.pb.h"
+#include "mysqlx_sql.pb.h"
 POP_PB_WARNINGS
 
 

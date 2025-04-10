@@ -42,8 +42,8 @@ PUSH_SYS_WARNINGS_CDK
 POP_SYS_WARNINGS_CDK
 
 PUSH_PB_WARNINGS
-#include "protobuf/mysqlx_session.pb.h"
-#include "protobuf/mysqlx_crud.pb.h"
+#include "mysqlx_session.pb.h"
+#include "mysqlx_crud.pb.h"
 POP_PB_WARNINGS
 
 

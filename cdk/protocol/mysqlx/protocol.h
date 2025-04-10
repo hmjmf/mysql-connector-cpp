@@ -44,16 +44,16 @@ PUSH_PB_WARNINGS
 #undef DELETE
 #endif
 
-#include "protobuf/mysqlx.pb.h"
-#include "protobuf/mysqlx_connection.pb.h"
-#include "protobuf/mysqlx_crud.pb.h"
-#include "protobuf/mysqlx_expect.pb.h"
-#include "protobuf/mysqlx_notice.pb.h"
-#include "protobuf/mysqlx_resultset.pb.h"
-#include "protobuf/mysqlx_prepare.pb.h"
-#include "protobuf/mysqlx_cursor.pb.h"
-#include "protobuf/mysqlx_session.pb.h"
-#include "protobuf/mysqlx_sql.pb.h"
+#include "mysqlx.pb.h"
+#include "mysqlx_connection.pb.h"
+#include "mysqlx_crud.pb.h"
+#include "mysqlx_expect.pb.h"
+#include "mysqlx_notice.pb.h"
+#include "mysqlx_resultset.pb.h"
+#include "mysqlx_prepare.pb.h"
+#include "mysqlx_cursor.pb.h"
+#include "mysqlx_session.pb.h"
+#include "mysqlx_sql.pb.h"
 POP_PB_WARNINGS
 
 #include "builders.h"

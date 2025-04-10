@@ -116,19 +116,39 @@ namespace mysqlx {
 /*
   Protobuf log handler initialization.
 */
+enum LogLevel {
+  LOGLEVEL_INFO,     // Informational.  This is never actually used by
+                     // libprotobuf.
+  LOGLEVEL_WARNING,  // Warns about issues that, although not technically a
+                     // problem now, could cause problems in the future.  For
+                     // example, a // warning will be printed when parsing a
+                     // message that is near the message size limit.
+  LOGLEVEL_ERROR,    // An error occurred which should never happen during
+                     // normal use.
+  LOGLEVEL_FATAL,    // An error occurred from which the library cannot
+                     // recover.  This usually indicates a programming error
+                     // in the code which calls the library, especially when
+                     // compiled in debug mode.
+
+#ifdef NDEBUG
+  LOGLEVEL_DFATAL = LOGLEVEL_ERROR
+#else
+  LOGLEVEL_DFATAL = LOGLEVEL_FATAL
+#endif
+};
 
 static void log_handler(LogLevel level, const char* filename, int line, const std::string& message);
 
 #ifdef _WIN32
 BOOL CALLBACK log_handler_init(PINIT_ONCE, PVOID, PVOID*)
 {
-  SetLogHandler(&log_handler);
+//   SetLogHandler(&log_handler);
   return TRUE;
 }
 #else
 static void log_handler_init()
 {
-  SetLogHandler(log_handler);
+//   SetLogHandler(log_handler);
 }
 #endif
 
