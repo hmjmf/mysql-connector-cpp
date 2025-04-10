@@ -553,7 +553,8 @@ namespace ds {
       std::random_device rnd;
       bool stop_processing = false;
       std::vector<uint16_t> weights;
-      std::set<std::pair<size_t,DS_variant&>> same_prio;
+      std::set<std::pair<size_t,DS_variant&>, 
+               decltype([](const auto& a, const auto& b) { return a.first < b.first; })> same_prio;
 
       for (auto it = m_ds_list.begin(); !stop_processing;)
       {

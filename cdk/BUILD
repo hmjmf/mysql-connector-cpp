@@ -29,7 +29,7 @@ cc_library(
         "@lz4//:lz4",
         "@zstd//:zstd",
         "@zlib//:zlib",
-        "//cdk/protocol/mysqlx/pb:cdk_protocol_mysqlx_pb_proto_cc",
+        "//cdk/protocol/mysqlx:cdk_protocol_mysqlx",
     ],
     copts = [
         "-std=c++20",

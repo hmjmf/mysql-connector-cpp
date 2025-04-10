@@ -4,3 +4,5 @@
 out
 CMakeUserPresets.json
 .vscode
+bazel-*
+MODULE.bazel.lock

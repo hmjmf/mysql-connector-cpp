@@ -10,3 +10,14 @@ cc_binary(
     linkopts = [
     ],
 )
+
+cc_binary(
+    name = "test",
+    srcs = ["test.cpp"],
+    deps = [
+
+    ],
+     copts = [
+        "-std=c++20",
+    ],
+)
