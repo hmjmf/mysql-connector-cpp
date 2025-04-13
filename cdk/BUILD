@@ -61,6 +61,7 @@ cc_library(
     ],
     copts = [
         "-std=c++20",
+        "-fvisibility=hidden",
     ],
     linkstatic = True, 
     visibility = ["//visibility:public"],
