@@ -1,4 +1,0 @@
-{
-  global: *;
-  local: EVP_PKEY_CTX_get0_rsa_oaep_label;
-};
