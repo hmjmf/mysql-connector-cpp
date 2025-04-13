@@ -64,7 +64,7 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
     linkopts = [
-        "-lresolv"
+        "-lresolv",
         "-Wl,--version-script=$(location :openssl.map)"
     ],
     additional_linker_inputs = [":openssl.map"],
