@@ -62,6 +62,7 @@ cc_library(
     copts = [
         "-std=c++20",
     ],
+    linkstatic = True, 
     visibility = ["//visibility:public"],
     linkopts = [
         "-lresolv"
