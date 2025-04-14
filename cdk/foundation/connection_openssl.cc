@@ -185,9 +185,8 @@ static void throw_openssl_error()
   char buffer[512];
 
   ERR_error_string_n(ERR_get_error(), buffer, sizeof(buffer));
-  std::cout << "OpenSSL error: " << buffer << std::endl;
-
-//   throw_openssl_error_msg(buffer);
+//   std::cout << "OpenSSL error: " << buffer << std::endl;
+  throw_openssl_error_msg(buffer);
 }
 
 /*
@@ -320,7 +319,8 @@ struct TLS_helper
 
   int m_ver_min = TLS1_VERSION;
   int m_ver_max = 0;
-  unsigned long m_ver_mask = SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3;
+//   unsigned long m_ver_mask = SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3;
+  unsigned long m_ver_mask = SSL_OP_NO_SSLv2 | 0x2000000;
 
   std::string m_cipher_list;
   std::string m_cipher_list_13;
