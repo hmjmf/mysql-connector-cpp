@@ -3,7 +3,7 @@ module(
     repo_name = "mysql-connector-cpp",
 )
 
-bazel_dep(name = "openssl", version = "3.3.1.bcr.1")
+bazel_dep(name = "boringssl", version = "0.20250311.0")
 bazel_dep(name = "rapidjson", version = "1.1.0.bcr.20241007")
 bazel_dep(name = "protobuf", version = "30.2", repo_name="com_google_protobuf")
 bazel_dep(name = "rules_proto", version = "7.1.0")

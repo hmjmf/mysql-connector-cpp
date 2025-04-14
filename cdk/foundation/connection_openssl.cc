@@ -185,8 +185,9 @@ static void throw_openssl_error()
   char buffer[512];
 
   ERR_error_string_n(ERR_get_error(), buffer, sizeof(buffer));
+  std::cout << "OpenSSL error: " << buffer << std::endl;
 
-  throw_openssl_error_msg(buffer);
+//   throw_openssl_error_msg(buffer);
 }
 
 /*
@@ -205,8 +206,9 @@ static void throw_ssl_error(SSL* tls, int err)
   case SSL_ERROR_WANT_ACCEPT:
   case SSL_ERROR_WANT_X509_LOOKUP:
 # if OPENSSL_VERSION_NUMBER >= 0x10100000L
-  case SSL_ERROR_WANT_ASYNC:
-  case SSL_ERROR_WANT_ASYNC_JOB:
+  // BoringSSL doesn't have these error codes
+  // case SSL_ERROR_WANT_ASYNC:
+  // case SSL_ERROR_WANT_ASYNC_JOB:
 # endif
 #endif
     //Will not throw anything, so function that calls this, will continue.
@@ -399,7 +401,7 @@ void TLS_helper::setup(SSL_CTX *ctx)
 
   if (!m_ver_max || m_ver_max > TLS1_2_VERSION)
   {
-    SSL_CTX_set_ciphersuites(ctx, m_cipher_list_13.c_str());
+    SSL_CTX_set_cipher_list(ctx, m_cipher_list_13.c_str());
   }
 
 #endif

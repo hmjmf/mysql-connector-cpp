@@ -50,8 +50,8 @@ cc_library(
     ],
     deps = [
         "@rapidjson//:rapidjson",
-        "@openssl//:ssl",
-        "@openssl//:crypto",
+        "@boringssl//:ssl",
+        "@boringssl//:crypto",
         "@com_google_protobuf//:protobuf",
         "@lz4//:lz4",
         "@lz4//:lz4_frame",
